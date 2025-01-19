@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/Leitura_Serial_Rotina.uf2'
+elf = 'build/Leitura_Serial_Rotina.elf'
