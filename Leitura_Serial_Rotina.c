@@ -48,6 +48,12 @@ int main() {
             printf("Resetando a placa\n");
             reset_usb_boot(0, 0);
         }
+         else if(userInput == '0'){
+            gpio_put(led_red, 0);
+            gpio_put(led_green, 0);
+            gpio_put(led_blue, 0);
+            printf("Leds desligados!\n");
+        }
         else{
             printf("Entrada inválida!\n");
         }
