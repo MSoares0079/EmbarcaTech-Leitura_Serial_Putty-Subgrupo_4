@@ -6,6 +6,8 @@
 #define led_green 11
 #define led_blue 12
 #define led_red 13
+#define buzzer 21
+
 
 int main() {
     stdio_init_all(); 
@@ -22,6 +24,7 @@ int main() {
     char userInput;
 
     while(1){
+        printf("Comandos: (1-9 pra LED, qwertyui pra notas, x para resetar a placa no modo bootsel):\n");
         userInput = getchar();
 
         if(userInput == '1'){
@@ -41,6 +44,13 @@ int main() {
             gpio_put(led_blue, 0);
             gpio_put(led_red, 1); 
             printf("LED vermelho ligado!\n");
+        }else if(userInput == 'x'){
+            printf("Resetando a placa\n");
+            reset_usb_boot(0, 0);
         }
+        else{
+            printf("Entrada inválida!\n");
+        }
+
     }
 }
