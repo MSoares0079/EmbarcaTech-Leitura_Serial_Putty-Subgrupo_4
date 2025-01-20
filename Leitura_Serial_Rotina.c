@@ -45,6 +45,62 @@ int main() {
             gpio_put(led_blue, 0);
             gpio_put(led_red, 1); 
             printf("LED vermelho ligado!\n");
+        }else if(userInput == '4'){
+            gpio_put(led_green, 1);
+            gpio_put(led_blue, 1);
+            gpio_put(led_red, 0);
+            printf("LED ciano ligado!\n");
+        }
+        else if(userInput == '5'){
+            gpio_put(led_green, 1);
+            gpio_put(led_blue, 0);
+            gpio_put(led_red, 1);
+            printf("LED amarelo ligado!\n");
+        }
+        else if(userInput == '6'){
+            gpio_put(led_green, 0);
+            gpio_put(led_blue, 1);
+            gpio_put(led_red, 1);
+            printf("LED magenta ligado!\n");
+        }
+        else if(userInput == '7'){
+            gpio_put(led_green, 1);
+            gpio_put(led_blue, 1);
+            gpio_put(led_red, 1);
+            printf("LED branco ligado!\n");
+        }
+        else if(userInput == '8'){
+            for (int i = 0; i < 5; i++) {
+                gpio_put(led_red, 1);
+                sleep_ms(100);
+                gpio_put(led_red, 0);
+                gpio_put(led_green, 1);
+                sleep_ms(100);
+                gpio_put(led_green, 0);
+                gpio_put(led_blue, 1);
+                sleep_ms(100);
+                gpio_put(led_blue, 0);
+            }
+            printf("LEDs vermelho, verde e azul piscando rapidamente!\n");
+        }
+        else if(userInput == '9'){
+            int colors[8][3] = {
+                {1, 0, 0}, 
+                {0, 1, 0},
+                {0, 0, 1},
+                {1, 1, 0},
+                {1, 0, 1},
+                {0, 1, 1},
+                {1, 1, 1},
+                {0, 0, 0}
+            };
+            for (int i = 0; i < 8; i++) {
+                gpio_put(led_red, colors[i][0]);
+                gpio_put(led_green, colors[i][1]);
+                gpio_put(led_blue, colors[i][2]);
+                sleep_ms(100);
+            }
+            printf("LEDs de todas as cores piscando!\n");
         }
         else if(userInput == 'q'){
             play_note(262, 100, buzzer); // C4
