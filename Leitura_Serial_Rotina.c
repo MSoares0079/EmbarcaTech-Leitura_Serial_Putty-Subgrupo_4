@@ -3,15 +3,16 @@
 #include "pico/stdlib.h"
 #include "pico/bootrom.h"
 
-#define led_green 11
-#define led_blue 12
-#define led_red 13
-#define buzzer 21
+#define led_green 11//Pino do LED verde
+#define led_blue 12//Pino do LED azul
+#define led_red 13//Pino do Led vermelho
+#define buzzer 21//Pino do buzzer
 
+void play_note(int frequency, int duration, int pin);//Declarando a função que toca o buzzer
 
 int main() {
-    stdio_init_all(); 
-
+    stdio_init_all();//Incializando a comunicação serial 
+    //Inicializando os pinos e definindo como saída
     gpio_init(led_green);
     gpio_set_dir(led_green, GPIO_OUT);
     gpio_init(led_blue);
@@ -21,11 +22,11 @@ int main() {
     gpio_init(buzzer);
     gpio_set_dir(buzzer, GPIO_OUT);
 
-    char userInput;
+    char userInput;//Declarando variavel para ler o caracter do teclado
 
     while(1){
         printf("Comandos: (1-9 pra LED, qwertyui pra notas, x para resetar a placa no modo bootsel):\n");
-        userInput = getchar();
+        userInput = getchar();//Obtendo o caracter do teclado digitado pelo usuário
 
         if(userInput == '1'){
             gpio_put(led_green, 1); 
@@ -91,5 +92,22 @@ int main() {
             printf("Entrada inválida!\n");
         }
 
+    }
+}
+void play_note(int frequency, int duration, int pin)
+{
+    if (frequency == 0) {
+        sleep_ms(duration);  // Pausa (silêncio)
+        return;
+    }
+
+    int delay = 1000000 / frequency / 2; // Meio ciclo da frequência
+    int cycles = (frequency * duration) / 1000;
+
+    for (int i = 0; i < cycles; i++) {
+        gpio_put(pin, 1);
+        sleep_us(delay);
+        gpio_put(pin, 0);
+        sleep_us(delay);
     }
 }
