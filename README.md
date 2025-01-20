@@ -24,7 +24,8 @@ O código consiste em ler a entrada do caractere digitado pelo usuário, no qual
     6- Acende o LED magenta(azul+vermelho)
     7- Acende o LED branco(verde+azul+vermelho)
     8- LEDs verde, azul e vermelho piscam rapidamente
-    9 -LEDs de todas as cores piscam
+    9- LEDs de todas as cores piscam
+    0- Desliga todos os LEDs
     q- Buzzer toca nota C4(Dó)
     w- Buzzer toca nota D4(Ré)
     e- Buzzer toca nota E4(Mi)
@@ -34,7 +35,7 @@ O código consiste em ler a entrada do caractere digitado pelo usuário, no qual
     u- Buzzer toca nota B4(Si)
     i- Buzzer toca nota C5(Dó)
     x- Reinicia o Raspberry em modo Bootsel
-      Observação: a opção de reiniciar o Raspberry não funciona na simulação do Wokwi,
-                  porque a função afeta a porta USB já a comunicação da simulação é através da UART. 
+          Observação: a opção de reiniciar o Raspberry não funciona na simulação do Wokwi,
+                      porque a função afeta a porta USB já a comunicação da simulação é através da UART. 
 # Link de um vídeo demostrando o funcionamento do código
 https://drive.google.com/file/d/1KtKvW7qeH8SCul4AlFUwnvlVl28l1hjR/view?usp=drive_link
